@@ -43,7 +43,7 @@ makeNewButton.addEventListener('click', changeToMakeYourOwn);
 homeButton.addEventListener('click', returnToHomePage);
 viewSavedCoversButton.addEventListener('click', viewSavedCovers);
 
-//ITERATION #3: NEW EVENT LISTENER///////////////////////
+//ITERATION #3: NEW EVENT LISTENER///////////////////////////
 makeMyBookBotton.addEventListener('click', makeMyBook);
 //////////////////////////////////////////////////////////////
 
