@@ -14,6 +14,22 @@ var saveCoverPage = document.querySelectorAll('.saved-view');
 var homePage = document.querySelectorAll('.home-view');
 var makeYourOwn = document.querySelector('.form-view');
 
+
+//ITERATION #3: NEW VARIABLES DOWN/////////////////////////////////////////
+var createCoverInput = document.querySelector('#cover');
+var createTitleInput = document.querySelector('#title');
+var createDescriptor1Input = document.querySelector('#descriptor1');
+var createDescriptor2Input = document.querySelector('#descriptor2');
+
+var createCover = document.querySelector('.cover');
+var createTitle = document.querySelector('.title');
+var createDescriptor1 = document.querySelector('.descriptor1');
+var createDescriptor2 = document.querySelector('.descriptor2');
+
+var makeMyBookBotton = document.querySelector('.create-new-book-button');
+///////////////NEW VARIABLES UP///////////////////////////////////////////
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -26,6 +42,10 @@ saveCoverButton.addEventListener('click', changeSavePage);
 makeNewButton.addEventListener('click', changeToMakeYourOwn);
 homeButton.addEventListener('click', returnToHomePage);
 viewSavedCoversButton.addEventListener('click', viewSavedCovers);
+
+//ITERATION #3: NEW EVENT LISTENER///////////////////////////
+makeMyBookBotton.addEventListener('click', makeMyBook);
+//////////////////////////////////////////////////////////////
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
@@ -59,6 +79,19 @@ function viewSavedCovers() {
   document.querySelector('.random-cover-button').style.display = "none"
   document.querySelector('.save-cover-button').style.display = "none"
 }
+
+//ITERATION #3: NEW FUNCTION: AKA. HANDLER///////////////////////////////
+//Question to research:
+//How to store submitted data into arrays covers, titles, and descriptors?
+//As well as display it.
+function makeMyBook () {
+  createCover.src = createCoverInput.value[covers];
+  createTitle.innerText = createTitleInput.value[titles];
+  createDescriptor1.innerText = createDescriptor1Input.value[descriptors];
+  createDescriptor2.innerText = createDescriptor2Input.value[descriptors];
+
+}
+///////////////////////////////////////////////////////////////////////
 
 function changeSavePage() {
   saveCoverPage.hide = false
