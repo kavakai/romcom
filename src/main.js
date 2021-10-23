@@ -10,22 +10,24 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 
-var saveCoverPage = document.querySelectorAll('.saved-view');
-var homePage = document.querySelectorAll('.home-view');
+var saveCoverPage = document.querySelector('.saved-view');
+var homePage = document.querySelector('.home-view');
 var makeYourOwn = document.querySelector('.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImage, coverImage, tagline1, tagline2);
+var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 
 // Add your event listeners here 👇
 randomButton.addEventListener('click', changeCover);
-saveCoverButton.addEventListener('click', changeSavePage);
+saveCoverButton.addEventListener('click', saveCurrentCover);
 makeNewButton.addEventListener('click', changeToMakeYourOwn);
 homeButton.addEventListener('click', returnToHomePage);
 viewSavedCoversButton.addEventListener('click', viewSavedCovers);
+document.onload = changeCover();
+
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
@@ -33,43 +35,67 @@ function changeCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 };
 
 function changeToMakeYourOwn() {
-  document.querySelector('.form-view').style.display = "block"
-  document.querySelector('.home-view').style.display = "none"
-  document.querySelector('.home-button').style.display = "block"
-  document.querySelector('.random-cover-button').style.display = "none"
-  document.querySelector('.save-cover-button').style.display = "none"
+  makeYourOwn.classList.remove('hidden');
+  homePage.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  randomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+
+  // document.querySelector('.form-view').style.display = "block";
+  // document.querySelector('.home-view').style.display = "none";
+  // document.querySelector('.home-button').style.display = "block";
+  // document.querySelector('.random-cover-button').style.display = "none";
+  // document.querySelector('.save-cover-button').style.display = "none";
 }
 
 function returnToHomePage() {
-  document.querySelector('.form-view').style.display = "none"
-  document.querySelector('.home-view').style.display = "block"
-  document.querySelector('.home-button').style.display = "none"
-  document.querySelector('.random-cover-button').style.display = "block"
-  document.querySelector('.save-cover-button').style.display = "block"
+  makeYourOwn.classList.add('hidden');
+  homePage.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+
+  // document.querySelector('.form-view').style.display = "none";
+  // document.querySelector('.home-view').style.display = "block";
+  // document.querySelector('.home-button').style.display = "none";
+  // document.querySelector('.random-cover-button').style.display = "block";
+  // document.querySelector('.save-cover-button').style.display = "block";
 }
 
 function viewSavedCovers() {
-  document.querySelector('.saved-view').style.display = "block"
-  document.querySelector('.form-view').style.display = "none"
-  document.querySelector('.home-view').style.display = "none"
-  document.querySelector('.home-button').style.display = "block"
-  document.querySelector('.random-cover-button').style.display = "none"
-  document.querySelector('.save-cover-button').style.display = "none"
+  makeYourOwn.classList.add('hidden');
+  homePage.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  randomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  saveCoverPage.classList.remove('hidden');
+  
+  // document.querySelector('.saved-view').style.display = "block";
+  // document.querySelector('.form-view').style.display = "none";
+  // document.querySelector('.home-view').style.display = "none";
+  // document.querySelector('.home-button').style.display = "block";
+  // document.querySelector('.random-cover-button').style.display = "none";
+  // document.querySelector('.save-cover-button').style.display = "none";
 }
 
-function changeSavePage() {
-  saveCoverPage.hide = false
-  homePage.hide = true
+function saveCurrentCover() {
+  for (var i = 0; i < savedCovers.length; i++)
+  if (currentCover !== savedCovers[i]) {
+    savedCovers.push(currentCover)
+  };
+  // document.querySelectorAll('.saved-view').innerHTML = savedCovers[i]
 }
 
   // if (homePage.classList.contains('hidden')) {
   //   homePage.classList.remove('hidden')
   // }
 
-console.log(makeYourOwn)
+console.log(savedCovers)
+console.log(currentCover)
 // function changeCover(covers, titles, descriptors) {
 //   for (var i = 0; i < covers.length; i++)
 //     if(currentCover === covers[i]) {
