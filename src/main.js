@@ -73,7 +73,8 @@ function viewSavedCovers() {
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   saveCoverPage.classList.remove('hidden');
-  
+  savedCovers.forEach(element(saveCoverPage.classList.add('mini-cover')))
+
   // document.querySelector('.saved-view').style.display = "block";
   // document.querySelector('.form-view').style.display = "none";
   // document.querySelector('.home-view').style.display = "none";
