@@ -20,10 +20,6 @@ var createTitleInput = document.querySelector('#title');
 var createDescriptor1Input = document.querySelector('#descriptor1');
 var createDescriptor2Input = document.querySelector('#descriptor2');
 
-// var createCover = document.querySelector('.cover');
-// var createTitle = document.querySelector('.user-title');
-// var createDescriptor1 = document.querySelector('.descriptor1');
-// var createDescriptor2 = document.querySelector('.descriptor2');
 
 var makeMyBookBotton = document.querySelector('.create-new-book-button');
 
@@ -34,6 +30,7 @@ var savedCovers = [
 ];
 var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 console.log(savedCovers)
+
 // Add your event listeners here 👇
 randomButton.addEventListener('click', changeCover);
 saveCoverButton.addEventListener('click', saveCurrentCover);
@@ -63,7 +60,7 @@ function changeToMakeYourOwn() {
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   saveCoverPage.classList.add('hidden');
-}
+};
 
 function returnToHomePage() {
   makeYourOwn.classList.add('hidden');
@@ -71,7 +68,8 @@ function returnToHomePage() {
   homeButton.classList.add('hidden');
   randomButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
-}
+  saveCoverPage.classList.add('hidden');
+};
 
 function viewSavedCovers(saveCoverPage) {
   makeYourOwn.classList.add('hidden');
@@ -80,7 +78,7 @@ function viewSavedCovers(saveCoverPage) {
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   saveCoverPage.classList.remove('hidden');
-}
+};
 
 function showCovers(savedCovers) {
   saveCoverView.innerHTML = '';
@@ -92,17 +90,14 @@ function showCovers(savedCovers) {
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
-  </section>`
-  // console.log(savedCovers)
-
-}
+  </section>`;
+};
 
 function saveCurrentCover() {
   for (var i = 0; i < savedCovers.length; i++)
     if (currentCover === savedCovers[i]) {
      return savedCovers
    } savedCovers.push(currentCover)
-    console.log(savedCovers)
 };
 
 
@@ -114,7 +109,7 @@ function makeMyBook () {
   tagline1.innerText = createDescriptor1Input.value;
   tagline2.innerText = createDescriptor2Input.value;
   returnToHomePage()
-}
+};
 
 
 
@@ -125,4 +120,4 @@ function makeMyBook () {
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
