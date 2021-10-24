@@ -52,6 +52,7 @@ function changeCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 };
 
 function changeToMakeYourOwn() {
@@ -96,8 +97,9 @@ function showCovers(savedCovers) {
 function saveCurrentCover() {
   for (var i = 0; i < savedCovers.length; i++)
     if (currentCover === savedCovers[i]) {
-      return savedCovers
-    } savedCovers.push(currentCover)
+     return savedCovers
+   } savedCovers.push(currentCover)
+    console.log(savedCovers)
 };
 
 
