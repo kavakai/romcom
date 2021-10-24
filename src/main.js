@@ -104,6 +104,11 @@ function saveCurrentCover() {
     savedCovers.push(currentCover)
   }
 }
+function saveCurrentCover() {
+  for (var i = 0; i < savedCovers.length; i++)
+  if (currentCover !== savedCovers[i]) {
+    savedCovers.push(currentCover)
+  };
 
 function makeMyBook () {
   event.preventDefault()
