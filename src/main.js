@@ -38,7 +38,10 @@ randomButton.addEventListener('click', changeCover);
 saveCoverButton.addEventListener('click', saveCurrentCover);
 makeNewButton.addEventListener('click', changeToMakeYourOwn);
 homeButton.addEventListener('click', returnToHomePage);
-viewSavedCoversButton.addEventListener('click', viewSavedCovers);
+viewSavedCoversButton.addEventListener('click', function() {
+  viewSavedCovers(saveCoverPage)
+  showCovers(savedCovers)
+});
 window.onload = changeCover();
 makeMyBookBotton.addEventListener('click', makeMyBook);
 
@@ -49,7 +52,6 @@ function changeCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  //currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 };
 
 function changeToMakeYourOwn() {
@@ -58,12 +60,7 @@ function changeToMakeYourOwn() {
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-
-  // document.querySelector('.form-view').style.display = "block";
-  // document.querySelector('.home-view').style.display = "none";
-  // document.querySelector('.home-button').style.display = "block";
-  // document.querySelector('.random-cover-button').style.display = "none";
-  // document.querySelector('.save-cover-button').style.display = "none";
+  saveCoverPage.classList.add('hidden');
 }
 
 function returnToHomePage() {
@@ -72,43 +69,38 @@ function returnToHomePage() {
   homeButton.classList.add('hidden');
   randomButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
-
-  // document.querySelector('.form-view').style.display = "none";
-  // document.querySelector('.home-view').style.display = "block";
-  // document.querySelector('.home-button').style.display = "none";
-  // document.querySelector('.random-cover-button').style.display = "block";
-  // document.querySelector('.save-cover-button').style.display = "block";
 }
 
-function viewSavedCovers() {
+function viewSavedCovers(saveCoverPage) {
   makeYourOwn.classList.add('hidden');
   homePage.classList.add('hidden');
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   saveCoverPage.classList.remove('hidden');
-  //savedCovers.forEach(element(saveCoverPage.classList.add('mini-cover')))
+}
 
-  // document.querySelector('.saved-view').style.display = "block";
-  // document.querySelector('.form-view').style.display = "none";
-  // document.querySelector('.home-view').style.display = "none";
-  // document.querySelector('.home-button').style.display = "block";
-  // document.querySelector('.random-cover-button').style.display = "none";
-  // document.querySelector('.save-cover-button').style.display = "none";
+function showCovers(savedCovers) {
+  for (var i = 0; i < savedCovers.length; i++)
+  saveCoverPage.innerHTML = `
+  <section class=${'saved-view'}>
+  <section class=${'saved-covers-section'}>
+  <img class=${'mini-cover'} src=${savedCovers[i].cover}>
+  <h2 class=${'mini-cover-title'}>${savedCovers[i].title}</h2>
+  <h3 class=${'mini-cover-title:first-letter'}>A tale of <span class=${'mini-cover-tagline'}>${savedCovers[i].tagline1}</span> and <span class=${'mini-cover-tagline'}>${savedCovers[i].tagline2}</span></h3>
+  <img class=${'mini-cover'} src="./assets/overlay.png">`
+  console.log(savedCovers)
+
 }
 
 function saveCurrentCover() {
   for (var i = 0; i < savedCovers.length; i++)
-    if (currentCover !== savedCovers[i]) {
+    if (currentCover === savedCovers[i]) {
       return savedCovers
-    savedCovers.push(currentCover)
-  }
-}
-function saveCurrentCover() {
-  for (var i = 0; i < savedCovers.length; i++)
-  if (currentCover !== savedCovers[i]) {
-    savedCovers.push(currentCover)
-  };
+    } savedCovers.push(currentCover)
+};
+
+
 
 function makeMyBook () {
   event.preventDefault()
@@ -116,33 +108,14 @@ function makeMyBook () {
   coverTitle.innerText = createTitleInput.value;
   tagline1.innerText = createDescriptor1Input.value;
   tagline2.innerText = createDescriptor2Input.value;
-
-  //currentCover = new Cover(coverImage.src, coverTitle.innerText, descriptor1.innerText, descriptor2.innerText);
   returnToHomePage()
-
 }
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-// function changeSavePage() {
-//   saveCoverPage.hide = false
-//   homePage.hide = true
-// }
 
-  // if (homePage.classList.contains('hidden')) {
-  //   homePage.classList.remove('hidden')
-  // }
-
-// console.log(savedCovers)
-// console.log(currentCover)
-// function changeCover(covers, titles, descriptors) {
-//   for (var i = 0; i < covers.length; i++)
-//     if(currentCover === covers[i]) {
-//       covers++
-//     }
-// }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
