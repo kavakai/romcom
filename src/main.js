@@ -49,7 +49,7 @@ function changeCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  //currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 };
 
 function changeToMakeYourOwn() {
@@ -87,7 +87,7 @@ function viewSavedCovers() {
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   saveCoverPage.classList.remove('hidden');
-  savedCovers.forEach(element(saveCoverPage.classList.add('mini-cover')))
+  //savedCovers.forEach(element(saveCoverPage.classList.add('mini-cover')))
 
   // document.querySelector('.saved-view').style.display = "block";
   // document.querySelector('.form-view').style.display = "none";
@@ -118,6 +118,8 @@ function makeMyBook () {
 }
 
 
+
+///////////////////////////////////////////////////////////////////////////////////
 
 // function changeSavePage() {
 //   saveCoverPage.hide = false
