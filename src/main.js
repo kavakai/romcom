@@ -9,7 +9,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 
-var saveCoverView = document.querySelector('.saved-covers-section')
+var saveCoverView = document.querySelector('.saved-covers-section');
 var saveCoverPage = document.querySelector('.saved-view');
 var homePage = document.querySelector('.home-view');
 var makeYourOwn = document.querySelector('.form-view');
@@ -23,16 +23,15 @@ var makeMyBookBotton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
-console.log(savedCovers)
+var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
 
 randomButton.addEventListener('click', changeCover);
 saveCoverButton.addEventListener('click', saveCurrentCover);
 makeNewButton.addEventListener('click', changeToMakeYourOwn);
 homeButton.addEventListener('click', returnToHomePage);
 viewSavedCoversButton.addEventListener('click', function() {
-  viewSavedCovers(saveCoverPage)
-  showCovers(savedCovers)
+  viewSavedCovers(saveCoverPage);
+  showCovers(savedCovers);
 });
 window.onload = changeCover();
 makeMyBookBotton.addEventListener('click', makeMyBook);
@@ -85,7 +84,6 @@ function showCovers(savedCovers) {
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
   </section>`;
-  console.log(savedCovers);
   }
 };
 
@@ -93,28 +91,27 @@ function removeCover() {
   var num = Number(event.target.closest("section").id)
     for (var i = 0; i < savedCovers.length; i++) {
       if (savedCovers[i].id === num) {
-        savedCovers.splice([i],1)
-        console.log(savedCovers);
+        savedCovers.splice([i],1);
       }
     }
-  showCovers()
-}
+  showCovers();
+};
 
 function saveCurrentCover() {
   for (var i = 0; i < savedCovers.length; i++)
     if (currentCover === savedCovers[i]) {
-     return savedCovers
-   } savedCovers.push(currentCover)
+     return savedCovers;
+   } savedCovers.push(currentCover);
 };
 
 function makeMyBook () {
-  event.preventDefault()
+  event.preventDefault();
   coverImage.src = createCoverInput.value;
   coverTitle.innerText = createTitleInput.value;
   tagline1.innerText = createDescriptor1Input.value;
   tagline2.innerText = createDescriptor2Input.value;
-  returnToHomePage()
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  returnToHomePage();
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
 };
 
 function getRandomIndex(array) {
