@@ -114,7 +114,7 @@ function makeMyBook () {
   tagline1.innerText = createDescriptor1Input.value;
   tagline2.innerText = createDescriptor2Input.value;
   returnToHomePage()
-  
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 };
 
 function getRandomIndex(array) {
